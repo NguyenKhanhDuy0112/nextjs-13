@@ -1,0 +1,19 @@
+.modal-otp{
+    &-title{
+        color: $primary-bg;
+        margin-top: 1rem;
+    }
+
+    &-form{
+        &-des{
+            &-hightlight{
+                color: $primary-bg;
+                font-weight: 600;
+            }
+        }
+        
+    }
+    .otp-input{
+        margin-bottom: 1rem;
+    }
+}

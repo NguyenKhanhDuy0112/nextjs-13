@@ -1,0 +1,15 @@
+.breadcrumb {
+    display: none;
+    align-items: center;
+    margin-top: 0;
+
+    @include responsive(xl-screen){
+      display: flex;
+    }
+
+    li {
+      font-size: 15px;
+      color: $primary-bg;
+      margin-right: 0.5em;
+    }
+  }

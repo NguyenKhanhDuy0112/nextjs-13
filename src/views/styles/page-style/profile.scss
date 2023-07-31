@@ -1,0 +1,321 @@
+.profile{
+    flex: 1;
+
+    &__wrapper{
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+        margin-top: 0;
+
+        @include responsive(xl-screen){
+            margin-top: 1rem;
+        }
+    }
+
+    &__sidebar{
+        background-color: #f4f2ef;
+        border-radius: 0;
+        box-shadow: none;
+        margin-bottom: 0rem;
+        flex: 0 0 100%;
+        min-height: 100vh;
+        height: auto;
+        display: block;
+
+        @include responsive (xl-screen){
+            flex: 0 0 30%;
+            border-radius: 10px;
+            height: fit-content;
+            box-shadow: 0 5px 8px #00000026;
+            min-height: auto;
+            margin-bottom: 1.625rem;
+        }
+
+        &.isPageProfile{
+            display: none;
+
+            @include responsive(xl-screen){
+                display: block;
+            }
+        }
+
+        &-title{
+            color: $primary-bg;
+            text-align: center;
+            border-bottom: 2px solid #ddd6c5;
+            padding: 1.5rem;
+            margin: 0 1rem;
+            display: none;
+
+            @include responsive (xl-screen){
+                display: block;
+            }
+        }
+
+        &-avatar{
+            display: none;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding: 1rem;
+
+            @include responsive(xl-screen){
+                display: flex;
+                margin-top: 0rem;
+            }
+
+            &-img{
+                background-color: #fff;
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+
+                img{
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    box-shadow: 0px 5px 8px #00000029;
+                }
+            }
+
+            &-name{
+                color: $primary-bg;
+                font-weight: 600;
+                font-size: 14px;
+            }
+        }
+
+        &-menu{
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 1rem;
+            gap: 1rem;
+
+            @include responsive(xl-screen){
+                gap: 0rem;
+            }
+
+            hr{
+                border-color: $gray-6c5;
+                border-top: 0;
+                margin: 0 1.2rem;
+                display: block;
+
+                @include responsive(xl-screen){
+                    display: none;
+                }
+            }
+
+            &-item{
+                &-logout{
+                    display: none;
+
+                    @include responsive(xl-screen){
+                        display: block;
+                    }
+                }
+                
+                &-logout &-img{
+                    width: 30px;
+                    height: 30px;
+                }
+                &-logout &-name{
+                    font-weight: bold;
+                    font-size: 18px;
+                }
+                &-link{
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    color: $primary-bg;
+                    gap: 0.5rem;
+                    padding: 0.5rem 1.5rem;
+                    transition: all ease .25s;
+                    cursor: pointer;
+
+                    &.active{
+                        box-shadow: 0px 5px 8px $black-box-shadow;
+                        background-color: $white-fff;
+                    }
+
+                    &:hover{
+                        // box-shadow: 0px 5px 8px $black-box-shadow;
+                        background-color: $white-fff;
+                    }
+                }
+
+                &-img{
+                    width: 30px;
+                    height: 30px;
+
+                    @include responsive(xl-screen){
+                        width: 25px;
+                        height: 25px;
+                    }
+                }
+
+                &-name{
+                    font-size: 18px;
+                    font-weight: bold;
+
+                    @include responsive(xl-screen){
+                        font-size: 14px;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+
+    &__info{
+        flex: 1;
+
+        &.isPageProfile{
+            display: none;
+
+            @include responsive(xl-screen){
+                display: block;
+            }
+        }
+
+        &-title{
+            font-size: 14px;
+            color: $primary-bg;
+            border-bottom: 2px solid $gray-3f0;
+            padding: 0 0 0.5rem 0;
+            margin-bottom: 1rem;
+            display: none;
+
+            @include responsive(xl-screen){
+                display: block;
+            }
+        }
+
+        &-content{
+            padding: 1rem;
+            background-color: $gray-2ef;
+            box-shadow: none;
+            border-radius: 10px;
+
+            @include responsive(xl-screen){
+                box-shadow: 0 5px 8px $black-box-shadow;
+            }
+        }
+
+        &-form{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            &-group{
+                display: flex;
+                gap: 1.5rem;
+                flex-direction: column;
+
+                @include responsive(xl-screen){
+                    flex-direction: row;
+                }
+            }
+            &-field{
+                flex: 1;
+
+                &-label{
+                    @include label-input();
+                }
+
+                &-error{
+                    color: #f75c38;
+                    font-size: 13px;
+                    margin-top: 0.2rem;
+                }
+
+                &-multiple{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.5rem;
+
+                    @include responsive(xl-screen){
+                        gap: 0.5rem;
+                    }
+
+                    &-controller{
+                        flex: 1;
+                    }
+
+                    &-btn{
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        box-shadow: 3px 5px 8px #0000001e;
+                        outline: none;
+                        border: 1px solid transparent;
+                        background-color: $primary-bg;
+                        color: $white-fff;
+                        font-size: 20px;
+                        cursor: pointer;
+                        margin-top: 3px;
+                    }
+                }
+
+                &-input{
+                    border-radius: 4px;
+                    height: 38px;
+                    padding: 4px 11px;
+                    background-color: #fff;
+                    width: 100%;
+                    border: 1px solid #ddd6c5;
+                    outline: none;
+                    font-size: 15px;
+
+                    @include responsive(xl-screen){
+                        font-size: 14px;
+                    }
+
+                    &:disabled{
+                        background-color: #ddd6c5;
+                    }
+
+                    &:focus{
+                        border-color: $primary-bg;
+                    }
+
+                    &.error-input{
+                        border-color: #f75c38;
+                    }
+                }
+            }
+            &-btn{
+                &-edit{
+                    width: auto;
+                    min-width: 78%;
+                    margin: 0 auto;
+                    height: 48px;
+                    font-weight: bold;
+                    font-size: 16px;
+
+                    @include responsive(xl-screen){
+                        font-weight: 500;
+                        min-width: 65%;
+                        font-size: 14px;
+                    }
+                }
+                &-changePass{
+                    width: auto;
+                    min-width: 78%;
+                    margin: 0 auto;
+                    @include btn-light();
+                    height: 48px;
+                    font-weight: bold;
+                    font-size: 16px;
+
+                    @include responsive(xl-screen){
+                        font-weight: 500;
+                        min-width: 65%;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}

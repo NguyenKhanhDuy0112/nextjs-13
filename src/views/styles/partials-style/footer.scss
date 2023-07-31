@@ -1,0 +1,102 @@
+.footer{
+    background-color: $gray-3ef;
+    border-top: 2px solid $primary-bg;
+    font-size: 13px;
+    color: $text-color;
+    max-width: 1920px;
+    width: 100%;
+    display: none;
+
+    @include responsive(xl-screen){
+        display: block;
+    }
+
+    &__top{
+        margin: 0 auto;
+        position: relative;
+        display: flex;
+        gap: 2rem;
+        justify-content: space-between;
+        padding: 1.5rem 4rem;
+
+        &-left{
+            flex: 0 0 76%;
+            display: flex;
+            gap: 2rem;
+
+            .footer__top-left-logo-link{
+                display: inline-block;
+                margin-bottom: 0.5rem;
+                img{
+                    width: 160px;
+                }
+            }
+
+            .footer__top-left-wrapper{
+                flex: 0 0 33.3333333%;
+            }
+
+            .footer__top-left-group{
+                margin-bottom: 1rem;
+
+                &-title{
+                    margin-bottom: 0.2rem;
+                    color: $text-color;
+                    font-weight: 600;
+                    font-size: 15px;
+                }
+
+                &-des{
+                    font-size: 13px;
+                    color: $text-color;
+                    display: inline-block;
+
+                    a{
+                        color: $text-color;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+
+        &-right{
+            flex: 1;
+
+            &-sale {
+                img{
+                    width: 110px;
+                }
+            }
+
+            .footer__top-right-title{
+                margin-bottom: 0.5rem;
+            }
+
+            .footer__top-right-form{
+                display: flex;
+
+                .input-container{
+                    flex: 1;
+                    height: 35px;
+
+                    input{
+                        height: 35px;
+                        border-radius: 4px 0px 0px 4px;
+                    }
+                }
+
+                &-btn{
+                    width: auto !important;
+                    border-radius: 0px 4px 4px 0px;
+                    padding: 4px 12px;
+                }
+            }
+        }
+    }
+
+    &__bottom{
+        border-top: 1px solid $primary-bg;
+        padding: 1rem 4rem;
+        text-align: center;
+    }
+}

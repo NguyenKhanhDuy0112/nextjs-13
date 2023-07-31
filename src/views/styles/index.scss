@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+//COMMON STYLES
+@import "./common-style/mixins";
+@import "./common-style/varriables";
+@import "./common-style/base";
+
+//PARTIALS STYLES
+@import "./partials-style/header.scss";
+@import "./partials-style/footer.scss";
+
+//COMPONENT STYLES
+@import "./component-style/input.scss";
+@import "./component-style/otp-input.scss";
+@import "./component-style/aleart.scss";
+@import "./component-style/modal.scss";
+@import "./component-style/custom-select.scss";
+@import "./component-style/breadcrumb.scss";
+@import "./component-style/radio.scss";
+@import "./component-style/modal-otp.scss";
+
+//PAGE STYLES
+@import "./page-style/login.scss";
+@import "./page-style/profile.scss";

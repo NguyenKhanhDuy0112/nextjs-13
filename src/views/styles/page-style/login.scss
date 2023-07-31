@@ -1,0 +1,220 @@
+.login {
+    .login-title {
+        color: $primary-bg;
+        margin-top: 1rem;
+    }
+    .login-desktop {
+        width: 100%;
+        max-width: 414px;
+        box-shadow: none;
+        background-color: #f4f2ef;
+        border-radius: 0;
+        margin: 0 auto;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100vh;
+
+        @include responsive(md-screen) {
+            padding: 2rem;
+        }
+
+        @include responsive(xl-screen) {
+            width: 500px;
+            max-width: 800px;
+            margin: 3em auto 3em;
+            box-shadow: 3px 5px 8px #00000029;
+            min-height: auto;
+            border-radius: 10px;
+        }
+
+        .login-desktop-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .login-desktop-back-btn {
+            display: flex;
+            border: 0px;
+            border-radius: 50px;
+            box-shadow: 3px 5px 8px #0000001e;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            position: absolute;
+            top: 10px;
+            width: 38px;
+            min-width: 38px;
+            height: 38px;
+            left: 10px;
+
+            @include responsive(xl-screen) {
+                display: none;
+            }
+        }
+
+        .login-desktop-title {
+            text-align: center;
+            color: #fff;
+            height: 168px;
+            background-color: $primary-bg;
+            margin-left: -1rem;
+            margin-top: -1rem;
+            margin-right: -1rem;
+            border-radius: 0 0 27px 27px;
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            padding: 1.5rem;
+            box-shadow: 3px 5px 8px #00000026;
+
+            @include responsive(md-screen) {
+                margin-left: -2rem;
+                margin-top: -2rem;
+                margin-right: -2rem;
+            }
+
+            @include responsive(xl-screen) {
+                height: auto;
+                position: relative;
+                color: $primary-bg;
+                margin-left: 0px;
+                margin-top: 0px;
+                margin-right: 0px;
+                display: block;
+                border-radius: 0px;
+                padding: 0;
+                background-color: transparent;
+                box-shadow: none;
+            }
+        }
+    }
+
+    .login-form-item {
+        margin-bottom: 1rem;
+
+        .login-form-item-checkbox {
+            display: flex;
+            gap: 0.3rem;
+            align-items: center;
+        }
+
+        .login-form-item-link {
+            text-decoration: underline;
+            color: $text-color;
+            font-size: 13px;
+        }
+    }
+
+    .btn-login {
+        width: 54%;
+        margin: 0 auto;
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
+        margin-top: 1.5rem;
+    }
+
+    .login-form-social-title {
+        position: relative;
+        text-align: center;
+        font-size: 16px;
+
+        &::after {
+            content: "";
+            height: 1.5px;
+            background-color: #242e52;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+        }
+        span {
+            background-color: #f4f2ef;
+            position: relative;
+            padding: 0 14px;
+            text-transform: capitalize;
+            z-index: 2;
+        }
+    }
+
+    .login-form-social {
+        display: flex;
+        flex-direction: column;
+
+        .login-form-social-btn {
+            @include flex-center();
+            border: none;
+            background-color: #fff !important;
+            border-radius: 50px;
+            box-shadow: 3px 5px 8px #00000026;
+            width: 100%;
+            margin: 8px auto;
+            padding: 1em;
+            font-size: 13px;
+            cursor: pointer;
+            gap: 0.4rem;
+
+            @include responsive(sm-screen) {
+                width: 85%;
+            }
+
+            &-txt {
+                font-weight: 600;
+            }
+
+            &-img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    .login-form-bottom {
+        font-size: 13px;
+        color: $text-color;
+        text-align: center;
+
+        .login-form-bottom-hightlight {
+            font-weight: 600;
+            color: $primary-bg;
+            cursor: pointer;
+            display: inline-block;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .login-form-bottom-des {
+            .login-form-bottom-des-hightlight {
+                color: $primary-bg;
+                font-weight: 600;
+            }
+
+            .login-form-bottom-des-link {
+                color: $primary-bg;
+                font-weight: 600;
+                cursor: pointer;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        a {
+            font-weight: 600;
+            color: $text-color;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

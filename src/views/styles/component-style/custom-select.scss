@@ -1,0 +1,31 @@
+.select-custom-container{
+    font-size: 13px;
+    border-color: none !important;
+    box-shadow: none !important;
+
+    .select-custom{
+        border-color: none !important;
+        div{
+            box-shadow: none !important;
+            border-color: none !important;
+
+            &:focus{
+                border-color: none !important;
+                border-color: $primary-bg;
+            }
+        }
+        &.error{
+            // border: 1px solid $red-c38;
+
+            & > div{
+                border-color: $red-c38;
+                box-shadow: none !important;
+            }
+        }
+    }
+
+    .input-error-message{
+        color: $red-c38;
+        margin-top: 0.2rem;
+    }
+}

@@ -1,0 +1,64 @@
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  transform: scale(0);
+  pointer-events: none;
+  transition: all ease .25s;
+
+  .closeButton {
+    background-color: transparent;
+    transform: scale(2.5);
+    outline: none;
+    border: none;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    @include flex-center();
+    cursor: pointer;
+  }
+
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+    transition: all ease .25s;
+
+    .modalContent {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border-radius: 4px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+
+      @include responsive(xl-screen) {
+        max-width: 500px;
+      }
+    }
+  }
+
+  /* Overlay styles */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+  }
+}

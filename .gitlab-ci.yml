@@ -1,0 +1,69 @@
+variables:
+   GIT_SUBMODULE_STRATEGY: recursive
+   # DOCKER_HOST: tcp://localhost:2375
+
+stages:
+   - build
+   - deploy
+   - release
+
+push-container:
+   stage: build
+   image: docker:18-dind
+   services:
+      - docker:18-dind
+   script:
+      - docker login -u _json_key -p "$(echo $GCP_KEYFILE)" "https://$REGISTRY_URI"
+      - docker build --network host -t $REGISTRY_URI/$NAMESPACE/id-consumer-mobile-webapp-v2:$CI_COMMIT_SHA . --no-cache
+      - docker push $REGISTRY_URI/$NAMESPACE/id-consumer-mobile-webapp-v2:$CI_COMMIT_SHA
+      - echo $CI_COMMIT_SHA
+   only:
+      - main-nextjs
+
+deploy-uat:
+   stage: deploy
+   before_script:
+      - "command -v ssh-agent >/dev/null || ( apk add --update openssh )"
+      - eval $(ssh-agent -s)
+      - echo "$RANCHER_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+      - mkdir -p ~/.ssh
+      - chmod 700 ~/.ssh
+      - ssh-keyscan $RANCHER_IP_ADDRESS >> ~/.ssh/known_hosts
+      - chmod 644 ~/.ssh/known_hosts
+   script:
+      - ssh $RANCHER_USER_NAME@$RANCHER_IP_ADDRESS "$RANCHER_UAT_DEPLOY_PATH 'kubectl set image deployment id-consumer-mobile-webapp id-consumer-mobile-webapp=$REGISTRY_URI/$NAMESPACE/id-consumer-mobile-webapp-v2:$CI_COMMIT_SHA --namespace=deli-v2-uat'"
+   only:
+      - main-nextjs
+
+tag-master:
+   stage: build
+   image: docker:18-dind
+   services:
+      - docker:18-dind
+   script:
+      - echo "Stamp release for Production-mode"
+      - echo $CI_COMMIT_TAG
+      - echo $CI_COMMIT_SHA
+      - docker login -u _json_key -p "$(echo $GCP_KEYFILE)" "https://$REGISTRY_URI"
+      - docker pull $REGISTRY_URI/$NAMESPACE/id-consumer-mobile-webapp-v2:$CI_COMMIT_SHA
+      - docker tag $REGISTRY_URI/$NAMESPACE/id-consumer-mobile-webapp-v2:$CI_COMMIT_SHA $REGISTRY_URI/$NAMESPACE/id-consumer-mobile-webapp-v2:$CI_COMMIT_TAG
+      - docker push $REGISTRY_URI/$NAMESPACE/id-consumer-mobile-webapp-v2:$CI_COMMIT_TAG
+   only:
+      - tags
+   # except:
+   # - /^(?!main).+@/
+
+deploy-production:
+   stage: deploy
+   before_script:
+      - "command -v ssh-agent >/dev/null || ( apk add --update openssh )"
+      - eval $(ssh-agent -s)
+      - echo "$RANCHER_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+      - mkdir -p ~/.ssh
+      - chmod 700 ~/.ssh
+      - ssh-keyscan $RANCHER_IP_ADDRESS >> ~/.ssh/known_hosts
+      - chmod 644 ~/.ssh/known_hosts
+   script:
+      - ssh $RANCHER_USER_NAME@$RANCHER_IP_ADDRESS "$RANCHER_PROD_DEPLOY_PATH 'kubectl set image deployment id-consumer-mobile-webapp id-consumer-mobile-webapp=$REGISTRY_URI/$NAMESPACE/id-consumer-mobile-webapp-v2:$CI_COMMIT_TAG --namespace=pizza4ps-v2'"
+   only:
+      - tags

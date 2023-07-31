@@ -1,0 +1,34 @@
+.otp-input {
+    .pincode-input-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .pincode-input-text {
+        outline: none;
+        font-size: 1.5rem;
+        margin: 0 0.5rem !important;
+        border: 1px solid #ddd6c5 !important;
+        border-radius: 4px;
+        flex: 1;
+        width: 40px !important;
+        height: 40px !important;
+
+        @include responsive(xl-screen) {
+            width: 50px !important;
+            height: 50px !important;
+        }
+
+        &:focus {
+            border-color: $primary-bg !important;
+        }
+    }
+
+    .pincode-input-text:first-child {
+        margin-left: 0 !important;
+    }
+
+    .pincode-input-text:last-child {
+        margin-right: 0 !important;
+    }
+}

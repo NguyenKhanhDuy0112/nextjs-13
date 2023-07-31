@@ -1,0 +1,38 @@
+.input-container{
+    .input-label{
+        @include label-input();
+    }
+
+    .input{
+        border-radius: 4px;
+        height: 38px;
+        padding: 4px 11px;
+        background-color: #fff;
+        width: 100%;
+        border: 1px solid #ddd6c5;
+        outline: none;
+        font-size: 15px;
+        
+        @include responsive(xl-screen){
+            font-size: 14px;
+        }
+
+        &:disabled{
+            background-color: #ddd6c5;
+        }
+
+        &:focus{
+            border-color: $primary-bg;
+        }
+
+        &.input-error{
+            border-color: #f75c38;
+        }
+    }
+    .input-error-message{
+        color: #f75c38;
+        font-size: 13px;
+        margin-top: 0.2rem;
+    }
+
+}

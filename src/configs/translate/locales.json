@@ -1,0 +1,9 @@
+{
+    "languages": ["en", "vi"],
+    "defaultLanguage": "vi",
+    "namespaces": ["translations"],
+    "defaultNamespace": "translations",
+    "namespaceSeparator": "|",
+    "keySeparator": ":",
+    "pluralSeparator": "_"
+  }

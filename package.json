@@ -1,0 +1,48 @@
+{
+  "name": "4ps-id",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "sh ./download_localise.sh && cross-env HTTPS=true HOST=id.pizza4ps.io PORT=443 next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.1.1",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@types/date-fns": "^2.6.0",
+    "@types/node": "20.4.2",
+    "@types/react": "18.2.15",
+    "@types/react-dom": "18.2.7",
+    "async-mutex": "^0.4.0",
+    "cookies-ts": "^1.0.5",
+    "date-fns": "^2.30.0",
+    "firebase": "^10.1.0",
+    "i18next": "^23.2.11",
+    "i18next-browser-languagedetector": "^7.1.0",
+    "i18next-fetch-backend": "^5.0.2",
+    "moment": "^2.29.4",
+    "next": "^13.4.12-canary.0",
+    "next-i18next": "^14.0.0",
+    "node-sass": "^9.0.0",
+    "re-base": "^1.5.1",
+    "react": "18.2.0",
+    "react-datepicker": "^4.16.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.45.2",
+    "react-i18next": "^13.0.2",
+    "react-pin-input": "^1.3.1",
+    "react-redux": "^8.1.1",
+    "react-select": "^5.7.4",
+    "redux": "^4.2.1",
+    "sass": "^1.64.0",
+    "stream": "^0.0.2",
+    "typescript": "5.1.6",
+    "yup": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/react-datepicker": "^4.11.2",
+    "cross-env": "^7.0.3"
+  }
+}

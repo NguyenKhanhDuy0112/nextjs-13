@@ -1,0 +1,89 @@
+//USAGE
+//EX: @inclue position(absolute, 100, 6, auto, auto){}
+@mixin position($position, $top, $right, $bottom, $left) {
+    position: $position;
+    top: $top;
+    right: $right;
+    left: $left;
+    bottom: $bottom;
+}
+
+//USAGE
+//EX: @inclue flex-center(){}
+@mixin flex-center() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin btn-light{
+    background-color: $white-fff;
+    color: $primary-bg;
+    box-shadow: 3px 5px 8px $black-box-shadow-1e;
+}
+
+@mixin label-input{
+    color: $primary-bg;
+    font-size: 15px;
+    display: inline-block;
+    margin-bottom: 0.4rem;
+    font-weight: bold;
+
+    @include responsive(xl-screen){
+        font-size: 14px;
+        margin-bottom: 0.2rem;
+    }
+}
+
+// RESPONSIVE - MIN-WIDTH - ANTD- xs -sm -md - lg -xl - xxl
+// USE: @include respond(xs-screen) {}
+
+@mixin responsive($breakpoint) {
+    // screen < 576px
+    @if $breakpoint==xs-screen {
+        @media only screen and (max-width: 576px) {
+            @content;
+        }
+    }
+
+    // screen ≥ 576px
+    @if $breakpoint==sm-screen {
+        @media only screen and (min-width: 576px) {
+            @content;
+        }
+    }
+
+    // screen ≥ 768px
+    @if $breakpoint==md-screen {
+        @media only screen and (min-width: 768px) {
+            @content;
+        }
+    }
+
+    // screen ≥ 992px
+    @if $breakpoint==lg-screen {
+        @media only screen and (min-width: 992px) {
+            @content;
+        }
+    }
+
+    // screen ≥ 1024px
+    @if $breakpoint==xl-screen {
+        @media only screen and (min-width: 1024px) {
+            @content;
+        }
+    }
+
+    // screen ≥ 1200pxx
+    @if $breakpoint==xxl-screen {
+        @media only screen and (min-width: 1200px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint==xxxl-screen {
+        @media only screen and (min-width: 1600px) {
+            @content;
+        }
+    }
+}
